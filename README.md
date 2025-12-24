@@ -9,4 +9,4 @@ Intelligent_Mobile_Robotics_Project/
 ├── trajectory_generator.py # 三次样条平滑轨迹生成
 └── main.py                # 主程序（环境初始化、规划+轨迹生成+可视化）
 
-<img width="242" height="206" alt="image" src="https://github.com/user-attachments/assets/4d97aef5-a86e-4714-ba7e-f2174a5e867c" />
+
