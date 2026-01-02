@@ -1,7 +1,12 @@
+# main.py
 from flight_environment import FlightEnvironment
 from path_planner import AStarPlanner
 from trajectory_generator import TrajectoryGenerator
 import numpy as np
+import matplotlib.pyplot as plt  # 确保导入matplotlib
+
+# 确保matplotlib支持交互模式，确保图片能显示
+plt.ion()
 
 # 初始化飞行环境（包含50个障碍物）
 env = FlightEnvironment(50)
@@ -20,6 +25,7 @@ except RuntimeError as e:
     exit(1)
 
 # 可视化3D路径（包含障碍物）
+print("显示3D轨迹与障碍物图...")
 env.plot_cylinders(path)
 
 # --------------------------------------------------------------------------------------------------- #
@@ -28,16 +34,10 @@ print("正在生成平滑轨迹...")
 traj_gen = TrajectoryGenerator(total_time=15.0)  # 总飞行时间15秒
 t, trajectory, waypoint_times = traj_gen.generate(path)
 
-# 可视化轨迹时间历程（三个子图）
+# 可视化轨迹时间历程（三个子图合并在一张图里）
+print("显示时间-坐标历程图...")
 traj_gen.plot_trajectory(t, trajectory, path, waypoint_times)
 
-# You must manage this entire project using Git. 
-# When submitting your assignment, upload the project to a code-hosting platform 
-# such as GitHub or GitLab. The repository must be accessible and directly cloneable. 
-#
-# After cloning, running `python3 main.py` in the project root directory 
-# should successfully execute your program and display:
-#   1) the 3D path visualization, and
-#   2) the trajectory plot.
-#
-# You must also include the link to your GitHub/GitLab repository in your written report.
+# 保持图片显示，直到用户关闭
+plt.ioff()
+plt.show()
